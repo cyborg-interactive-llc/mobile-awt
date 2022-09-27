@@ -86,12 +86,22 @@ public class Path2D implements Cloneable {
     static final int EXPAND_MAX_COORDS = EXPAND_MAX * 2;
     static final int EXPAND_MIN = 10; // ensure > 6 (cubics)
 
+    private String tag = "";
+    
     public Path2D(int rule, int initialTypes) {
         setWindingRule(rule);
         this.pointTypes = new byte[initialTypes];
         doubleCoords = new double[initialTypes * 2];
     }
 
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+    
+    public String getTag() {
+        return tag;
+    }
+    
     static byte[] expandPointTypes(byte[] oldPointTypes, int needed) {
         final int oldSize = oldPointTypes.length;
         final int newSizeMin = oldSize + needed;
